@@ -1,13 +1,12 @@
 import type { ApplicationContract } from '@ioc:Adonis/Core/Application'
-import { IocContract } from '@adonisjs/fold'
 import URLshortnerService from 'App/Services/URLshortnerService'
 
 export default class AppProvider {
-  constructor(protected $container: IocContract) {}
+  constructor(protected app: ApplicationContract) {}
 
   public register() {
     // Register your own bindings
-    this.$container.singleton('Bitlink/URLShortnerService',()=>{
+    this.app.container.singleton('Bitlink/URLShortnerService',()=>{
       return new URLshortnerService()
     })
   }
