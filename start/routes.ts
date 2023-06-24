@@ -19,16 +19,9 @@
 */
 
 import Route from '@ioc:Adonis/Core/Route'
-import ShortnerService from '@ioc:Bitlink/URLShortnerService'
 
-Route.get('/', ()=>{
-  return {msg:'we are logically blessed'}
-})
+Route.get('/', 'Ping')
 
-Route.post('/url',()=>{
-  return 'post a new url'
-})
+Route.post('/url','URLController.shortenURL')
 
-Route.get('/url/:shortened_url',()=>{
-  return 'get the original url for the shortend url'
-})
+Route.get('/:short_code','URLController.redirectUrl')
